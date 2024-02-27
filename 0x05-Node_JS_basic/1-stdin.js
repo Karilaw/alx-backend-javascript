@@ -1,4 +1,3 @@
-// 1-stdin.js
 const readline = require('readline');
 
 /**

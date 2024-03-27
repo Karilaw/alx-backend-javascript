@@ -1,10 +1,13 @@
-export const weakMap = new WeakMap();
-
-export function queryAPI(endpoint) {
-  let count = weakMap.get(endpoint) || 0;
-  weakMap.set(endpoint, ++count);
-
-  if (count >= 5) {
-    throw new Error('Endpoint load is high');
+const updateUniqueItems = (map) => {
+  if (map instanceof Map) {
+    for (const [key, value] of map.entries()) {
+      if (value === 1) {
+        map.set(key, 100);
+      }
+    }
+    return map;
   }
-}
+  throw new Error('Cannot process');
+};
+
+export default updateUniqueItems;

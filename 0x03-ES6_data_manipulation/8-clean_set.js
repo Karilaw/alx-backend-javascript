@@ -1,10 +1,11 @@
-function cleanSet(set, startString) {
-  if (startString === '') return '';
-  let result = '';
-  for (const item of set) {
-    if (item.startsWith(startString)) {
-      result += `${item.slice(startString.length)}-`;
-    }
+const cleanSet = (set, startString) => {
+  if (startString === undefined || startString.length === 0) {
+    return '';
   }
-  return result.slice(0, -1);
-}
+  return [...set]
+    .filter((parametro) => (parametro !== undefined ? parametro.startsWith(startString) : ''))
+    .map((parametro) => (parametro !== undefined ? parametro.slice(startString.length) : ''))
+    .join('-');
+};
+
+export default cleanSet;
